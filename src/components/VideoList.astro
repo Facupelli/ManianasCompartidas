@@ -39,9 +39,6 @@ const filteredVideos = videoList.filter(
 filteredVideos.map((video) => {
   const videoDate = new Date(video.snippet.publishedAt);
 
-  const videoYear = videoDate.getFullYear();
-  const videoMonth = months[videoDate.getMonth()];
-
   const index = videosByDate.findIndex(
     (date) => date.year === String(videoDate.getFullYear())
   );
@@ -53,7 +50,6 @@ filteredVideos.map((video) => {
   }
   return;
 });
-console.log(videosByDate);
 ---
 
 <section>
