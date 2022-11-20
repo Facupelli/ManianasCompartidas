@@ -1,0 +1,22 @@
+---
+const { videos } = Astro.props;
+---
+
+<section>
+  <!-- {
+    videoList.map((video) => (
+      <div>
+        <YouTube id={video.id.videoId} />
+      </div>
+    ))
+  } -->
+  {
+    videos.map((video) => (
+      <video src={video} width="250" autoplay={false} loop={true} controls>
+        Tu navegador no admite el elemento <code>video</code>.
+      </video>
+    ))
+  }
+</section>
+
+<style is:global></style>

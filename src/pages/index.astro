@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import VideoList from "../components/VideoList.astro";
+import VideosAds from "../components/VideosAds.astro";
+
+//VIDEOS
+import redTulum from "../media/ads/redTulum.mp4";
+import defensaConsumidor from "../media/ads/defensaConsumidor.mp4";
+import OSSEhorarios from "../media/ads/OSSE-horarios.mp4";
+import OSSEderrochar1 from "../media/ads/OSSE-derrochar1.mp4";
+import OSSEderrochar2 from "../media/ads/OSSE-derrochar2.mp4";
+import OSSEcumpli from "../media/ads/OSSEcumpli.mp4";
+import concursoAsador from "../media/ads/concursoAsador.mp4";
+import consejoIngenieros from "../media/ads/consejoIngenieros.mp4";
+import emotivoSeleccion from "../media/ads/emotivoSeleccion.mp4";
+import mujeresSanas from "../media/ads/mujeresSanas.mp4";
+import acompañame1 from "../media/ads/acompañame1.mp4";
+import acompañame2 from "../media/ads/acompañame2.mp4";
+import acompañame3 from "../media/ads/acompañame3.mp4";
+import acompañame4 from "../media/ads/acompañame4.mp4";
+import alientoSeleccion from "../media/ads/alientoSeleccion.mp4";
+import animaAnimal from "../media/ads/animaAnimal.mp4";
+import CISEM from "../media/ads/CISEM.mp4";
+
+const videosLeft = [
+  redTulum,
+  defensaConsumidor,
+  OSSEcumpli,
+  OSSEderrochar1,
+  OSSEderrochar2,
+  OSSEhorarios,
+  concursoAsador,
+  consejoIngenieros,
+  emotivoSeleccion,
+];
+
+const videosRight = [
+  mujeresSanas,
+  acompañame1,
+  acompañame2,
+  acompañame3,
+  acompañame4,
+  alientoSeleccion,
+  animaAnimal,
+  CISEM,
+];
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Mañanas Compartidas</h1>
+    <div class="container-grid">
+      <section>
+        <VideosAds videos={videosLeft} />
+      </section>
+      <section>
+        <VideoList />
+      </section>
+      <section>
+        <VideosAds videos={videosRight} />
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    /* max-width: 1200px; */
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .container-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+  }
+</style>
