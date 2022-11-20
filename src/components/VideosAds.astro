@@ -12,11 +12,17 @@ const { videos } = Astro.props;
   } -->
   {
     videos.map((video) => (
-      <video src={video} width="250" autoplay={false} loop={true} controls>
+      <video src={video} width="200" autoplay={false} loop={true} controls>
         Tu navegador no admite el elemento <code>video</code>.
       </video>
     ))
   }
 </section>
 
-<style is:global></style>
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

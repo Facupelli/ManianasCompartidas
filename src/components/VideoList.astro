@@ -24,56 +24,76 @@ const response = await fetch(
 const data = await response.json();
 const videoList = data.items;
 
-const videosByDate = {
-  2022: {},
-  2023: {},
-  2024: {},
-  2025: {},
-};
+const videosByDate = [
+  { year: "2022", videos: [] },
+  { year: "2023", videos: [] },
+  { year: "2024", videos: [] },
+  { year: "2025", videos: [] },
+];
+const date = new Date();
+const filterDate = new Date(date.setMonth(date.getMonth() - 4));
+const filteredVideos = videoList.filter(
+  (video) => new Date(video.snippet.publishedAt) > filterDate
+);
 
-// videoList.map((video) => {
-//   const date = new Date(video.snippet.publishedAt);
+filteredVideos.map((video) => {
+  const videoDate = new Date(video.snippet.publishedAt);
 
-//   const year = date.getFullYear();
-//   const month = months[date.getMonth()];
+  const videoYear = videoDate.getFullYear();
+  const videoMonth = months[videoDate.getMonth()];
 
-//   if (!videosByDate[year][month]) {
-//     console.log("hola");
-//     videosByDate[year][month] = [video.id.videoId];
-//   } else {
-//     console.log("chau");
-//     videosByDate[year][month].push(video.id.videoId);
-//   }
-// });
-
-// console.log(
-//   Object.entries(videosByDate).filter(
-//     (video) => Object.keys(video[1]).length > 0
-//   )
-// );
+  const index = videosByDate.findIndex(
+    (date) => date.year === String(videoDate.getFullYear())
+  );
+  if (typeof index === "number") {
+    videosByDate[index].videos.push({
+      id: video.id.videoId,
+      title: video.snippet.title,
+    });
+  }
+  return;
+});
+console.log(videosByDate);
 ---
 
 <section>
-  <!-- {
-    videoList.map((video) => (
-      <div>
-        <YouTube id={video.id.videoId} />
-      </div>
-    ))
-  } -->
+  {
+    videosByDate.map((date) => {
+      if (date.videos.length > 0) {
+        return (
+          <>
+            <h3>{date.year}</h3>
+            <div class="videos-grid">
+              {date.videos.map((video) => (
+                <div class="yt-wrapper">
+                  <YouTube id={video.id} />
+                  <p>{video.title}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        );
+      }
+    })
+  }
 </section>
 
-<style is:global>
-  section > div {
+<style>
+  section .videos-grid {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     gap: 1rem;
   }
-  yt-wrapper {
-    width: 300px;
-    min-width: 300px;
-    max-width: 300px;
-    background-color: red;
+  .yt-wrapper {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .yt-wrapper p {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    text-align: center;
   }
 </style>
