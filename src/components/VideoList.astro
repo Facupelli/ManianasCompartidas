@@ -31,7 +31,7 @@ const videosByDate = [
   { year: "2025", videos: [] },
 ];
 const date = new Date();
-const filterDate = new Date(date.setMonth(date.getMonth() - 4));
+const filterDate = new Date(date.setMonth(date.getMonth() - 5));
 const filteredVideos = videoList.filter(
   (video) => new Date(video.snippet.publishedAt) > filterDate
 );
@@ -76,11 +76,14 @@ filteredVideos.map((video) => {
 
 <style>
   section .videos-grid {
+    margin-top: 1rem;
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    justify-content: space-between;
+    row-gap: 2rem;
   }
+
   .yt-wrapper {
     width: 250px;
     min-width: 250px;

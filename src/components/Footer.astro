@@ -1,13 +1,23 @@
 ---
+import facebookLogo from "../media/logos/facebook-svgrepo-com.svg";
+import instagramLogo from "../media/logos/instagram-svgrepo-com.svg";
+import youtubeLogo from "../media/logos/youtube-svgrepo-com.svg";
+
 const platform = [
-  { name: "instagram", link: "https://www.instagram.com/mcompartidas/" },
+  {
+    name: "instagram",
+    link: "https://www.instagram.com/mcompartidas/",
+    logo: instagramLogo,
+  },
   {
     name: "facebook",
     link: "https://www.facebook.com/profile.php?id=100064026340468",
+    logo: facebookLogo,
   },
   {
     name: "youtube",
     link: "https://www.youtube.com/channel/UCvrDO-ousUrb7q_19-dJ8nQ",
+    logo: youtubeLogo,
   },
 ];
 ---
@@ -15,9 +25,14 @@ const platform = [
 <footer>
   {
     platform.map((platform) => (
-      <p>
-        <a href={platform.link}>{platform.name}</a>
-      </p>
+      <div class="flex">
+        <div class="logo-wrapper">
+          <img alt={platform.name} src={platform.logo} />
+        </div>
+        <p>
+          <a href={platform.link}>{platform.name}</a>
+        </p>
+      </div>
     ))
   }
 </footer>
@@ -25,9 +40,32 @@ const platform = [
 <style is:global>
   footer {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     justify-content: center;
-    background-color: rgb(75, 75, 75);
+    background-color: #642c50;
     padding: 2rem;
+  }
+
+  .flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .logo-wrapper {
+    width: 25px;
+    height: 25px;
+  }
+
+  .logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  footer p a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
   }
 </style>

@@ -1,21 +1,37 @@
 ---
 const { videos } = Astro.props;
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
 ---
 
 <section>
-  <!-- {
-    videoList.map((video) => (
-      <div>
-        <YouTube id={video.id.videoId} />
-      </div>
-    ))
-  } -->
   {
-    videos.map((video) => (
-      <video src={video} width="200" autoplay={false} loop={true} controls>
-        Tu navegador no admite el elemento <code>video</code>.
-      </video>
-    ))
+    videos.map((video) => {
+      const videoStartDate = new Date(video.time[0]);
+      videoStartDate.setHours(0, 0, 0, 0);
+      const videoEndDate = new Date(video.time[1]);
+      videoEndDate.setHours(0, 0, 0, 0);
+
+      if (
+        today.getTime() >= videoStartDate.getTime() &&
+        videoEndDate.getTime() >= today.getTime()
+      ) {
+        return (
+          <video
+            src={video.ad}
+            width="200"
+            autoplay={false}
+            loop={false}
+            controls
+          >
+            Tu navegador no admite el elemento <code>video</code>
+          </video>
+        );
+      } else {
+        return null;
+      }
+    })
   }
 </section>
 

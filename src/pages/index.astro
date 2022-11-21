@@ -25,26 +25,48 @@ import CISEM from "../media/ads/CISEM.mp4";
 import Navigation from "../components/Navigation.astro";
 
 const videosLeft = [
-  redTulum,
-  defensaConsumidor,
-  OSSEcumpli,
-  OSSEderrochar1,
-  OSSEderrochar2,
-  OSSEhorarios,
-  concursoAsador,
-  consejoIngenieros,
-  emotivoSeleccion,
+  { time: [new Date("11/01/2022"), new Date("11/20/2022")], ad: redTulum },
+  {
+    time: [new Date("11/01/2022"), new Date("11/30/2022")],
+    ad: defensaConsumidor,
+  },
+  { time: [new Date("11/01/2022"), new Date("11/20/2022")], ad: OSSEcumpli },
+  {
+    time: [new Date("11/01/2022"), new Date("11/30/2022")],
+    ad: OSSEderrochar1,
+  },
+  {
+    time: [new Date("11/01/2022"), new Date("11/30/2022")],
+    ad: OSSEderrochar2,
+  },
+  { time: [new Date("11/01/2022"), new Date("11/30/2022")], ad: OSSEhorarios },
+  {
+    time: [new Date("11/11/2022"), new Date("11/19/2022")],
+    ad: concursoAsador,
+  },
+  {
+    time: [new Date("11/08/2022"), new Date("11/30/2022")],
+    ad: consejoIngenieros,
+  },
+
+  { time: ["11/08/2022", "11/30/2022"], ad: animaAnimal },
+  { time: ["11/01/2022", "11/30/2022"], ad: CISEM },
 ];
 
 const videosRight = [
-  mujeresSanas,
-  acompañame1,
-  acompañame2,
-  acompañame3,
-  acompañame4,
-  alientoSeleccion,
-  animaAnimal,
-  CISEM,
+  { time: ["11/09/2022", "11/30/2022"], ad: mujeresSanas },
+  { time: ["11/01/2022", "11/30/2022"], ad: acompañame1 },
+  { time: ["11/01/2022", "11/30/2022"], ad: acompañame2 },
+  { time: ["11/01/2022", "11/30/2022"], ad: acompañame3 },
+  { time: ["11/01/2022", "11/30/2022"], ad: acompañame4 },
+  {
+    time: ["11/16/2022", "11/30/2022"],
+    ad: alientoSeleccion,
+  },
+  {
+    time: [new Date("11/15/2022"), new Date("11/20/2022")],
+    ad: emotivoSeleccion,
+  },
 ];
 ---
 
